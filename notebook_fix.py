@@ -8,11 +8,13 @@ load_dotenv()
 
 # Set up the Hugging Face token
 hf_token = os.getenv("HUGGINGFACE_API_TOKEN")
-if hf_token:
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
-    print("✅ Hugging Face token loaded successfully")
-else:
-    print("❌ Warning: HUGGINGFACE_API_TOKEN not found in environment variables")
+if not hf_token:
+    raise EnvironmentError(
+        "HUGGINGFACE_API_TOKEN not found in environment variables"
+    )
+
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = hf_token
+print("✅ Hugging Face token loaded successfully")
 
 # Now you can continue with your existing notebook code...
 
@@ -38,5 +40,4 @@ llm = HuggingFaceEndpoint(
 )
 chat = ChatHuggingFace(llm=llm)
 
-# Alternative: If you want to try Mixtral, you might need a PRO subscription.
-# modelo = 'mistralai/Mixtral-8x7B-Instruct-v0.1'
+main
