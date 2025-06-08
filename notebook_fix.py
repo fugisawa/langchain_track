@@ -40,5 +40,4 @@ llm = HuggingFaceEndpoint(
 )
 chat = ChatHuggingFace(llm=llm)
 
-# Alternative: If you want to try Mixtral, you might need PRO subscription
-# modelo = 'mistralai/Mixtral-8x7B-Instruct-v0.1' 
+main
